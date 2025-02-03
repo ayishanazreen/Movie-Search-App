@@ -1,0 +1,16 @@
+# Ignore system files
+.DS_Store
+Thumbs.db
+node_modules/
+.vscode/
+AppData/
+Desktop/
+Downloads/
+Music/
+Videos/
+NTUSER.DAT
+*.exe
+*.log
+Application Data/
+Cookies/
+Documents/

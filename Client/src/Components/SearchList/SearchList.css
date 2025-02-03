@@ -1,0 +1,36 @@
+.search-list-container{
+    height: 600px;
+    overflow: auto;
+    margin-top: 20px;
+}
+
+.search-items{
+    background-color: #f3f3f3e1;
+    margin-bottom: 5px;
+    padding: 20px;
+    border-radius: 4px;
+    display: flex;
+    color: rgb(24, 21, 21);
+    word-break: break-all;
+    display: flex;
+    flex-direction: column;
+}
+
+.search-items img{
+    width: 100px;
+    height: 100px;
+
+}
+
+
+.search-list-container .search-items .title{
+    margin: 10px;
+    width: 200px;
+}
+
+.search-list-container .search-items  .overview{
+    font-size: 14px;
+    display: block;
+    padding: 10px;
+
+}

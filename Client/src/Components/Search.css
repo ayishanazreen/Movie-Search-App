@@ -1,0 +1,21 @@
+
+.search-container{
+    max-width: 600px;
+    width: 100%;
+}
+.search-container .heading-container{
+    display: flex;
+    margin-bottom: 20px;
+}
+
+.search-container .heading-container h1{
+    text-align: center;
+    font-size: 32px;
+}
+
+.search-container .heading-container img{
+    width: 30px;
+    height: 40px;
+    object-fit: contain;
+    mix-blend-mode: multiply;
+}
