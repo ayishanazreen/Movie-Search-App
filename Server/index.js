@@ -1,8 +1,11 @@
 const express=require("express");
+const mongoose=require('mongoose');
 const app=express();
-const PORT=3005;
 const movies=require("./movies.json");
 const cors=require("cors");
+require('dotenv').config();
+const connectDb=require('./config/db');
+const searchRoute=require('./router/searchRoute')
 
 // const userList=[
 //     {name:"Ayisha"},
@@ -12,32 +15,9 @@ const cors=require("cors");
 // ]
 app.use(express.json());
 app.use(cors());
-app.listen(PORT, ()=>{
-    console.log(`Server is started ${PORT}`);
+app.listen(process.env.PORT, ()=>{
+    console.log(`Server is started ${process.env.PORT}`);
 });
+connectDb();
 
-app.get("/api/movies", (req,res)=>{
-    let filteredMovies=[]
-    // console.log(req.query);
-    const {movieName}=req.query;
-    if(movieName)
-    {
-    filteredMovies= movies.filter((movie) => movie.title.toLowerCase().includes(movieName.toLowerCase()));
-    }
-    else
-    {
-        filteredMovies=movies;
-    }
-    res.json(filteredMovies);
-});
-
-
-app.post("/api/movies", (req,res)=>{
-    const {movieName}=req.body;
-    movies.push({
-        id:Date.now(),
-        title:movieName,
-        poster_path:"",
-    })
-    res.json(movies);
- });
+app.use('/api/movies', searchRoute);

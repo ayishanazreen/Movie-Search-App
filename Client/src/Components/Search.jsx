@@ -4,16 +4,20 @@ import './Search.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const API_URL ="http://localhost:3005/api/movies";
+const API_URL ="http://localhost:3007/api/movies";
+
+// const API_URL="https://api.themoviedb.org/3/discover/movie?api_key=d3449ff6ec0c027623bf6b6f5fff78b3&language=en-US&sort_by=popularity.desc&page=1&include_adult=false"
 export const Search = () => {
     const [inputText, setInputText] =useState("")
     const [searchList, setSearchList]=useState([]);
+    const [text,setText]=useState(false);
     // const [filteredList, setFilteredList]= useState([]);  for local filter
      
 
     const clearSearch=()=>{
         setInputText("");
         setSearchList([]);
+        setText(false);
     }
 
     const handleOnChange=(event)=>{
@@ -24,13 +28,13 @@ export const Search = () => {
 
     const handleSubmit =async()=>{
       try {
-        const response= await axios(API_URL, {
-          method:"POST",
-          data:{
+        const response= await axios.get(API_URL, {
+          params:{
             movieName:inputText,
           }
         })
         setSearchList(response.data);
+        setText(true);
         
       } catch (error) {
         console.error(error);
@@ -41,7 +45,7 @@ export const Search = () => {
 
     const fetchList = async()=>{
       try {
-        const response= await axios(API_URL,
+        const response= await axios.get(API_URL,
           {
             params:{
                 movieName:inputText,
@@ -59,7 +63,7 @@ export const Search = () => {
         if(inputText)
             fetchList();  
         }, 2000);
-       
+               
         return()=>{
             clearTimeout(Timeout);
         }
@@ -74,7 +78,7 @@ export const Search = () => {
         </div>
       <SearchInput inputText={inputText} handleOnChange={handleOnChange} clearSearch={clearSearch}/>
       <button onClick={handleSubmit}>Submit</button>
-      <SearchList searchList={searchList}  />
+      {searchList && searchList.length > 0  ? (<SearchList searchList={searchList} />) : ( text && (<h1 className="no-result"> No matching movie.. Try with another keyword</h1>))}
     </div>
     </>
   )
