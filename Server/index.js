@@ -16,9 +16,12 @@ const searchRoute=require('./router/searchRoute')
 connectDb();
 app.use(express.json());
 app.use(cors());
+app.use('/api/movies', searchRoute);
+
+
+
 app.listen(process.env.PORT, ()=>{
     console.log(`Server is started ${process.env.PORT}`);
 });
 
 
-app.use('/api/movies', searchRoute);
