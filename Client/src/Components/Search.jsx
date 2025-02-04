@@ -34,7 +34,11 @@ export const Search = () => {
           }
         })
         setSearchList(response.data);
-        setText(true);
+        if (response.data.length < 0 )
+        {
+          setText(true);
+        }
+       
         
       } catch (error) {
         console.error(error);
