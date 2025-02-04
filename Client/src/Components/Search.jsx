@@ -10,12 +10,14 @@ const API_URL ="https://movie-search-app-yuqj.onrender.com/api/movies"
 export const Search = () => {
     const [inputText, setInputText] =useState("")
     const [searchList, setSearchList]=useState([]);
+    const [text,setText]=useState(false);
     // const [filteredList, setFilteredList]= useState([]);  for local filter
      
 
     const clearSearch=()=>{
         setInputText("");
         setSearchList([]);
+        setText(false);
     }
 
     const handleOnChange=(event)=>{
@@ -32,10 +34,16 @@ export const Search = () => {
           }
         })
         setSearchList(response.data);
+        if (response.data.length < 0 )
+        {
+          setText(true);
+        }
+       
         
       } catch (error) {
         console.error(error);
         setSearchList([]);
+        setText(false);
         
       }}
 
@@ -48,7 +56,7 @@ export const Search = () => {
         </div>
       <SearchInput inputText={inputText} handleOnChange={handleOnChange} clearSearch={clearSearch}/>
       <button onClick={handleSubmit}>Submit</button>
-      {searchList && searchList.length > 0  ? (<SearchList searchList={searchList} />) : <h1 className="no-result"> No matching movie.. Try with another keyword</h1>}
+      {searchList && searchList.length > 0  ? (<SearchList searchList={searchList} />) : ( text && (<h1 className="no-result"> No matching movie.. Try with another keyword</h1>))}
     </div>
     </>
   )
