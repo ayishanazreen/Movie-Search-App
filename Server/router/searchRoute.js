@@ -4,11 +4,16 @@ const Movies=require('../model/searchModel');
 const movies=require('../movies.json')
 
 const populateDb = async()=>{
+    try {
         const existingMovies= await Movies.find();
         if(existingMovies.length ===0){
          const insertMovies=await Movies.insertMany(movies);
          console.log("Database Populated", insertMovies); 
         }
+        
+    } catch (error) {
+        console.error("Error populating database:", error);    
+    }       
 }
 
 
@@ -26,11 +31,16 @@ router.get("/", async(req,res)=>{
          filteredMovies=await Movies.find().limit(10);
          console.log(filteredMovies)
        }   
+
+        if (filteredMovies.length === 0) {
+        return res.status(404).json({ message: "No movies found." });
+      }
        res.json(filteredMovies)
 }
     catch (error)
     {
-        console.log(error)
+        console.log(error);
+        res.status(500).json({ message: "Internal server error." });
     }
 
 });

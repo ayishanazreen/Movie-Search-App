@@ -4,7 +4,7 @@ import './Search.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const API_URL ="https://movie-search-app-ibsz.onrender.com/";
+const API_URL ="https://movie-search-app-ibsz.onrender.com/"
 
 // const API_URL="https://api.themoviedb.org/3/discover/movie?api_key=d3449ff6ec0c027623bf6b6f5fff78b3&language=en-US&sort_by=popularity.desc&page=1&include_adult=false"
 export const Search = () => {
@@ -38,36 +38,10 @@ export const Search = () => {
         
       } catch (error) {
         console.error(error);
+        setSearchList([]);
+        setText(false);
         
       }}
-
-    
-
-    const fetchList = async()=>{
-      try {
-        const response= await axios.get(API_URL,
-          {
-            params:{
-                movieName:inputText,
-            }}); 
-            console.log(response);
-            setSearchList(response.data); 
-      } 
-      catch (error) 
-      {
-        console.error(error);  
-      }
-    }
-    useEffect(()=>{
-        const Timeout=setTimeout(()=>{
-        if(inputText)
-            fetchList();  
-        }, 2000);
-               
-        return()=>{
-            clearTimeout(Timeout);
-        }
-    }, [inputText]);
 
   return (
     <>
