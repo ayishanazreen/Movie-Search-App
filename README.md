@@ -1,3 +1,6 @@
+  **Deployed Url**: https://movie-search-app-client.onrender.com/ 
+
+  
 <h1> Movie Search Project</h1>
  A movie search application built with React and Express JS, designed to provide seamless searching in movies and resulting the details of movies. This includes the concept of searching across the MongoDb (Mongoose) database where the database is predefined set of movies lists.
 
@@ -35,6 +38,9 @@
   <h3>If it not valid movie name, show text as not in database</h3>
   
   ![screenshots](https://github.com/ayishanazreen/Movie-Search-App/blob/master/Screenshots/noResult.png?raw=true)
+
+
+
 
  
 
