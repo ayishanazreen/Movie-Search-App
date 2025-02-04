@@ -23,7 +23,7 @@ router.get("/", async(req,res)=>{
            console.log(filteredMovies)
        } 
        else{
-         filteredMovies=await Movies.find();
+         filteredMovies=await Movies.find().limit(10);
          console.log(filteredMovies)
        }   
        res.json(filteredMovies)
