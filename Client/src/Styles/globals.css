@@ -6,7 +6,7 @@
   }
   body {
     background: linear-gradient(rgba(0, 0, 0, 0.788), rgba(0, 0, 0, 0.514)), 
-                url('moviebg.png');
+                url('/moviebg.png');
     background-size: cover;
     background-repeat: repeat;
     background-position: center;

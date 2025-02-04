@@ -47,7 +47,7 @@ export const Search = () => {
     <>
     <div className='search-container'>
         <div className='heading-container'>
-        <img src="sea.png"></img>
+        <img src="/sea.png"></img>
         <h1>Looking for a Movie..?</h1>
         </div>
       <SearchInput inputText={inputText} handleOnChange={handleOnChange} clearSearch={clearSearch}/>
