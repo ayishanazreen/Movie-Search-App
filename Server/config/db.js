@@ -11,8 +11,6 @@ const connectDb = async () => {
 
     // Connecting to MongoDB using the connection string
     const { connection } = await mongoose.connect(dbUri, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
       serverSelectionTimeoutMS: 30000, // Optional: Increase timeout for slow connections
       socketTimeoutMS: 45000, // Optional: Set socket timeout
     });
