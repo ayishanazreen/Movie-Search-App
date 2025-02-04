@@ -4,7 +4,7 @@ import './Search.css';
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const API_URL ="https://movie-search-app-ibsz.onrender.com/api/movies";
+const API_URL ="https://movie-search-app-ibsz.onrender.com/";
 
 // const API_URL="https://api.themoviedb.org/3/discover/movie?api_key=d3449ff6ec0c027623bf6b6f5fff78b3&language=en-US&sort_by=popularity.desc&page=1&include_adult=false"
 export const Search = () => {
