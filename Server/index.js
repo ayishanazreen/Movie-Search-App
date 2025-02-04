@@ -13,11 +13,12 @@ const searchRoute=require('./router/searchRoute')
 //     {name:"Shijil"},
 //     {name:"Aizen"},
 // ]
+connectDb();
 app.use(express.json());
 app.use(cors());
 app.listen(process.env.PORT, ()=>{
     console.log(`Server is started ${process.env.PORT}`);
 });
-connectDb();
+
 
 app.use('/api/movies', searchRoute);
